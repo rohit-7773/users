@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../utils/apiCalls';
+import {isAuthenticatedContext, authenticateContext} from '../App'
 
 
-const Register = ({isAuthenticated, authenticate}) => {
+const Register = () => {
+
+    const isAuthenticated = useContext(isAuthenticatedContext)
+    const authenticate = useContext(authenticateContext)
+
     const [formData, setFormData] = useState({
         name: '',
         username: '',

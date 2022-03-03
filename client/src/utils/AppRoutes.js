@@ -4,14 +4,16 @@ import Login from '../components/Login'
 import Register from '../components/Register'
 import { Routes, Route } from 'react-router-dom'
 import Logout from '../components/Logout'
+import Products from '../components/Products'
 
-const AppRoutes = ({isAuthenticated, authenticate}) => {
+const AppRoutes = () => {
     return (
         <Routes>
-            <Route exact path='/' element={<Main isAuthenticated={isAuthenticated} />} />
-            <Route path='/login' element={<Login isAuthenticated={isAuthenticated} authenticate={authenticate} />} />
-            <Route path='/register' element={<Register isAuthenticated={isAuthenticated} authenticate={authenticate} />} />
-            <Route path='/logout' element={<Logout isAuthenticated={isAuthenticated} authenticate={authenticate} />} />
+            <Route exact path='/' element={<Main />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/logout' element={<Logout />} />
+            <Route path='/products' element={<Products />} />
         </Routes>
     )
 }

@@ -1,7 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {isAuthenticatedContext, authenticateContext} from '../App'
 
-const Logout = ({isAuthenticated, authenticate}) => {
+const Logout = () => {
+
+    
+    const isAuthenticated = useContext(isAuthenticatedContext)
+    const authenticate = useContext(authenticateContext)
 
     const navigate = useNavigate();
     useEffect(() => {
@@ -10,8 +15,8 @@ const Logout = ({isAuthenticated, authenticate}) => {
             localStorage.removeItem('access_token');
             authenticate(false);
         }
-        navigate('/');
-    })
+        navigate('/login');
+    })  
 
     return (
         <h1>Logging out</h1>

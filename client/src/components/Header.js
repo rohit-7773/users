@@ -14,7 +14,13 @@ const Header = ({isAuthenticated}) => {
                     <li><Link to='/register'>Register</Link></li>
                 </>
             }
-            { isAuthenticated && <li><Link to='/logout'>Logout</Link></li> }
+            { 
+                isAuthenticated && 
+                <>
+                    <li><Link to='/products'>Products</Link></li>
+                    <li><Link to='/logout'>Logout</Link></li> 
+                </>
+            }       
         </ul>
     </div>
   )
