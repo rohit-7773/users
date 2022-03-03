@@ -40,7 +40,15 @@ const verifyToken = token => {
 }
 
 const authenticate = ({username, password}) => {
-    return users.find(user => user.username == username && user.password == password);
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].username === username) {
+            console.log(users[i].username)
+            if (users[i].password === password) {
+                return users[i];
+            }
+        }
+    }
+    return null;
 }
 
 server.post('/register', (req, res) => {
@@ -58,9 +66,11 @@ server.post('/register', (req, res) => {
 server.post('/login', (req, res) => {
     const {username, password} = req.body;
     const user = authenticate({username, password});
+    console.log(user)
     if (user == null) {
         const message = 'user is not registered';
-        res.status(400).json({message});
+        res.status(401).json({message});
+        return
     }
     const access_token = createToken({username, password})
     res.status(200).json({access_token})

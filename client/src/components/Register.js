@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const Register = ({isAuthenticated}) => {
+const Register = ({isAuthenticated, authenticate}) => {
     const [formData, setFormData] = useState({
         name: '',
         username: '',
