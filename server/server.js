@@ -61,6 +61,7 @@ server.post('/register', (req, res) => {
     users.push({name, username, password});
     const access_token = createToken({username, password})
     res.status(200).json({access_token})
+    console.log(users)
 })
 
 server.post('/login', (req, res) => {

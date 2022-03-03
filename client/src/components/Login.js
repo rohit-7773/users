@@ -20,13 +20,13 @@ const Login = ({isAuthenticated, authenticate}) => {
     const navigate = useNavigate()
     const handleSubmit = event => {
         event.preventDefault();
-        login({...formData})
+        login(formData  )
         .then(({data}) => {
-            authenticate(true);
-            localStorage.setItem('isAuthenticated', true);
-            localStorage.setItem('access_token', data.access_token);
-            setError('')
-            navigate('/');  
+                authenticate(true);
+                localStorage.setItem('isAuthenticated', true);
+                localStorage.setItem('access_token', data.access_token);
+                setError('')
+                navigate('/');  
         })
         .catch(err => {
             setError(err.response.data.message);
